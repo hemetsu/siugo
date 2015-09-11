@@ -1,7 +1,7 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "DavidHuang",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "DavidHuang Website",
   "keywords": [
     "OpenShift",
     "Node.js",
@@ -9,27 +9,24 @@
     "openshift"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "David Huang",
+    "email": "hemetsu@hotmail.com",
+    "url": "http://davidhuang.co"
   },
-  "homepage": "http://www.openshift.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/openshift/origin-server"
-  },
-
+  "homepage": "http://www.davidhuang.co",
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "~3.4.4"
+    "express": "^3.4.8",
+    "express-uglify-middleware": "^1.0.2",
+    "less-middleware": "^2.0.1",
+    "logfmt": "^1.2.0",
+    "path": "^0.11.14"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }
