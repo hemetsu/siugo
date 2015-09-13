@@ -1,5 +1,9 @@
 /* Global container */
 
+html, body {
+	height: 100%;
+}
+
 .container-fluid {
 	max-width: 1260px;
 }
@@ -8,8 +12,8 @@
 .vertical-center {
 	display: table;
 	width: 100%;
-    height: 100%;
-    position: absolute;
+  height: 100%;
+  position: absolute;
 
 	&> .content {
 		display: table-cell;
@@ -25,7 +29,8 @@
 	position: relative;
 	text-align: center;
 	padding: 6em 0 0;
-	span {
+
+	&> div {
 		font-family: 'Playfair Display', serif;
 		letter-spacing: 0.2em;
 		visibility: hidden;
@@ -37,11 +42,13 @@
 		position: relative;
 		font-weight: 400;
 		font-size: 10em;
+		font-size: 10vw;
 		text-transform: uppercase;
 		line-height: 1em;
 		padding: 0 0 0.1em 0.2em;
 		color: #999;
 		visibility: visible;
+		margin: 0 0 0.2em;
 		.opacity(1);
 		.transition(0.2s all ease-in-out);
 
@@ -65,22 +72,23 @@
 	}
 
 	.subtitle {
-		display: block;
 		font-size: 2em;
 		text-transform: uppercase;
-	    margin: -8em auto 8em;
-	    .transition(0.8s all cubic-bezier(0.2,1,0.3,1));
+  	position: absolute;
+    width: 100%;
+    top: .5em;
+    left: 0;
+    text-align: center;
+    .transition(0.8s all cubic-bezier(0.2,1,0.3,1));
 	}
 
 	.type {
-		display: block;
 		font-size: 2em;
 		.transition(0.8s all cubic-bezier(0.2,1,0.3,1));
 	}
 
 	#coming-soon {
 		position: absolute;
-		display: block;
 		width: 100%;
 		top: 0.5em;
 		left: 0;
@@ -93,6 +101,21 @@
 		.transition(0.4s all cubic-bezier(0.2,1,0.3,1));
 	}
 
+	.contact {
+		position: absolute;
+		width: 100%;
+		text-transform: uppercase;
+		visibility: visible;
+		.opacity(1);
+		font-size: 2em;
+		.transition(0.4s all cubic-bezier(0.2,1,0.3,1));
+
+		.address, .telephone a {
+			color: #999;
+		}
+
+	}
+
 	&:hover {
 		.logo {
 			color: #000;
@@ -100,14 +123,14 @@
 				transform: scale3d(1,1,1);
 			}
 		}
-		span {
+		div {
 			visibility: visible;
 			.opacity(1);
 		}
 		.type {
 			transform: scale3d(0.8,0.8,1) translate3d(0,10px,0);
 		}
-		#coming-soon {
+		#coming-soon, .contact {
 			visibility: hidden;
 			.opacity(0);
 		}

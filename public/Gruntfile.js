@@ -56,6 +56,12 @@ module.exports = function(grunt) {
           // 'scripts/bootstrap/affix.js'
         ],
         dest: 'scripts/bootstrap.js'
+      },
+      vendor: {
+        src: [
+          'scripts/vendor/*.js'
+        ],
+        dest: 'scripts/plugins.js'
       }
     },
 
@@ -74,6 +80,10 @@ module.exports = function(grunt) {
       main: {
         src: 'scripts/main.js',
         dest: 'js/main.min.js'
+      },
+      vendor: {
+        src: 'scripts/plugins.js',
+        dest: 'js/plugins.min.js'
       }
     },
 
@@ -100,6 +110,6 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('css', ['less:compile', 'autoprefixer:core', 'cssmin:minify']);
   grunt.registerTask('js', ['concat:bootstrap', 'uglify:bootstrap', 'uglify:main']);
-  grunt.registerTask('default', ['less:compile', 'autoprefixer:core', 'cssmin:minify', 'concat:bootstrap', 'uglify:bootstrap', 'uglify:main']);
+  grunt.registerTask('default', ['less:compile', 'autoprefixer:core', 'cssmin:minify', 'concat:bootstrap', 'concat:vendor', 'uglify:bootstrap', 'uglify:main', 'uglify:vendor']);
 
 };

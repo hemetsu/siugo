@@ -2648,6 +2648,10 @@ input[type="button"].btn-block {
   }
 }
 /* Global container */
+html,
+body {
+  height: 100%;
+}
 .container-fluid {
   max-width: 1260px;
 }
@@ -2668,7 +2672,7 @@ input[type="button"].btn-block {
   text-align: center;
   padding: 6em 0 0;
 }
-.logo-wrapper span {
+.logo-wrapper > div {
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.2em;
   visibility: hidden;
@@ -2680,11 +2684,13 @@ input[type="button"].btn-block {
   position: relative;
   font-weight: 400;
   font-size: 10em;
+  font-size: 10vw;
   text-transform: uppercase;
   line-height: 1em;
   padding: 0 0 0.1em 0.2em;
   color: #999;
   visibility: visible;
+  margin: 0 0 0.2em;
   opacity: 1;
   filter: alpha(opacity=100);
   transition: 0.2s all ease-in-out;
@@ -2708,20 +2714,21 @@ input[type="button"].btn-block {
   bottom: 0;
 }
 .logo-wrapper .subtitle {
-  display: block;
   font-size: 2em;
   text-transform: uppercase;
-  margin: -8em auto 8em;
+  position: absolute;
+  width: 100%;
+  top: .5em;
+  left: 0;
+  text-align: center;
   transition: 0.8s all cubic-bezier(0.2, 1, 0.3, 1);
 }
 .logo-wrapper .type {
-  display: block;
   font-size: 2em;
   transition: 0.8s all cubic-bezier(0.2, 1, 0.3, 1);
 }
 .logo-wrapper #coming-soon {
   position: absolute;
-  display: block;
   width: 100%;
   top: 0.5em;
   left: 0;
@@ -2734,6 +2741,20 @@ input[type="button"].btn-block {
   filter: alpha(opacity=100);
   transition: 0.4s all cubic-bezier(0.2, 1, 0.3, 1);
 }
+.logo-wrapper .contact {
+  position: absolute;
+  width: 100%;
+  text-transform: uppercase;
+  visibility: visible;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  font-size: 2em;
+  transition: 0.4s all cubic-bezier(0.2, 1, 0.3, 1);
+}
+.logo-wrapper .contact .address,
+.logo-wrapper .contact .telephone a {
+  color: #999;
+}
 .logo-wrapper:hover .logo {
   color: #000;
 }
@@ -2742,7 +2763,7 @@ input[type="button"].btn-block {
   -webkit-transform: scale3d(1, 1, 1);
           transform: scale3d(1, 1, 1);
 }
-.logo-wrapper:hover span {
+.logo-wrapper:hover div {
   visibility: visible;
   opacity: 1;
   filter: alpha(opacity=100);
@@ -2751,7 +2772,8 @@ input[type="button"].btn-block {
   -webkit-transform: scale3d(0.8, 0.8, 1) translate3d(0, 10px, 0);
           transform: scale3d(0.8, 0.8, 1) translate3d(0, 10px, 0);
 }
-.logo-wrapper:hover #coming-soon {
+.logo-wrapper:hover #coming-soon,
+.logo-wrapper:hover .contact {
   visibility: hidden;
   opacity: 0;
   filter: alpha(opacity=0);
