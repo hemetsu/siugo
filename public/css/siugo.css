@@ -3105,10 +3105,6 @@ h5 {
 .text-content ul li {
   list-style-position: inside;
 }
-.text-content .main-desc {
-  font-size: 2em;
-  font-family: 'Kaushan Script', cursive;
-}
 .text-content h4 {
   margin: 2em 0 0.5em;
   padding: 1em 0;
@@ -3138,6 +3134,9 @@ h5 {
   font-size: 0.857em;
   background-color: #f5a9d0;
   color: #ffffff;
+}
+#about h3 {
+  margin: 1em 0 0.8em;
 }
 #gallery {
   /* //.gallery-images */
