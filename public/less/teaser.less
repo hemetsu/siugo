@@ -1,0 +1,47 @@
+.teaser-services, .teaser-location {
+	font-size: 2em;
+	margin: 2em 0;
+	span {
+		white-space: nowrap;
+	}
+}
+
+.teaser-location {
+	color: @brand-black;
+}
+
+@media (max-width: 767px) {
+
+	#main-container {
+		margin-top: 0 !important;
+		position: static;
+	}
+
+	.divider {
+		display: none !important;
+	}
+
+	.subtitle {
+		font-size: 1.5em;
+	}
+
+	.logo-wrapper {
+		.logo {
+			font-size: 5em;
+		}
+	}
+
+	.teaser-services {
+		span {
+			display: block;
+		}
+	}
+
+	.footer {
+		position: static;
+		a, span {
+			display: block;
+		}
+	}
+
+}

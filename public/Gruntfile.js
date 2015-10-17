@@ -42,17 +42,17 @@ module.exports = function(grunt) {
     concat: {
       bootstrap: {
         src: [
-          // 'scripts/bootstrap/transition.js',
+          'scripts/bootstrap/transition.js',
           // 'scripts/bootstrap/alert.js',
           // 'scripts/bootstrap/button.js',
           // 'scripts/bootstrap/carousel.js',
-          // 'scripts/bootstrap/collapse.js',
-          'scripts/bootstrap/dropdown.js'
+          'scripts/bootstrap/collapse.js',
+          'scripts/bootstrap/dropdown.js',
           // 'scripts/bootstrap/modal.js',
           // 'scripts/bootstrap/tooltip.js',
           // 'scripts/bootstrap/popover.js',
           // 'scripts/bootstrap/scrollspy.js',
-          // 'scripts/bootstrap/tab.js',
+          'scripts/bootstrap/tab.js'
           // 'scripts/bootstrap/affix.js'
         ],
         dest: 'scripts/bootstrap.js'
