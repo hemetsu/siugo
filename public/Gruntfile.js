@@ -4,6 +4,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    includereplace: {
+      partials: {
+        src: 'partial/form.html',
+        dest: 'form.html'
+      }
+    },
+
     less: {
       compile: {
         options: {
@@ -43,7 +50,7 @@ module.exports = function(grunt) {
       bootstrap: {
         src: [
           'scripts/bootstrap/transition.js',
-          // 'scripts/bootstrap/alert.js',
+          'scripts/bootstrap/alert.js',
           // 'scripts/bootstrap/button.js',
           // 'scripts/bootstrap/carousel.js',
           'scripts/bootstrap/collapse.js',
@@ -95,6 +102,10 @@ module.exports = function(grunt) {
       scripts: {
         files: 'scripts/**/*.js',
         tasks: ['default']
+      },
+      partials: {
+        files: 'partial/**/*.html',
+        tasks: ['includereplace']
       }
     }
   });
@@ -106,10 +117,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-include-replace');
 
   // Default task(s).
   grunt.registerTask('css', ['less:compile', 'autoprefixer:core', 'cssmin:minify']);
   grunt.registerTask('js', ['concat:bootstrap', 'uglify:bootstrap', 'uglify:main']);
-  grunt.registerTask('default', ['less:compile', 'autoprefixer:core', 'cssmin:minify', 'concat:bootstrap', 'concat:vendor', 'uglify:bootstrap', 'uglify:main', 'uglify:vendor']);
+  grunt.registerTask('default', ['includereplace', 'less:compile', 'autoprefixer:core', 'cssmin:minify', 'concat:bootstrap', 'concat:vendor', 'uglify:bootstrap', 'uglify:main', 'uglify:vendor']);
 
 };

@@ -36,14 +36,17 @@ h1, h2, h3, h4, h5 {
 }
 
 #main-container {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	.opacity(0);
-	visibility: hidden;
-	.transition(0.4s all ease-in-out);
-	min-width: 320px;
-	
+
+	&.home {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		.opacity(0);
+		visibility: hidden;
+		.transition(0.4s all ease-in-out);
+		min-width: 320px;
+	}
+
 	&.center {
 		top: 50%;
 		.opacity(1);

@@ -40,7 +40,7 @@ $(function() {
   });
 
 
-  var $mainContainer = $('#main-container');
+  var $mainContainer = $('#main-container.home');
 
   var updateMainContainerHeight = function() {
   	var height = $mainContainer.height() / 2;
@@ -104,15 +104,15 @@ $(function() {
 			flickr.getPhotos(set.id, function(photos) {
 				$.each(photos.photoset.photo, function(i, photo) {
 					var url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
-					
+
 					var filter = photos.photoset.title.toLowerCase().replace(/ /g, '').replace(/&/,'-');
 
-					var template = '<div class="mix ' + filter + '" style="background-image:url(' + url + ')" alt="' + photo.title + '">' + 
+					var template = '<div class="mix ' + filter + '" style="background-image:url(' + url + ')" alt="' + photo.title + '">' +
 													'<div><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
 													'</div>';
 					$('#gallery-images').append(template);
 				});
-				
+
 			});
 		});
 	});
