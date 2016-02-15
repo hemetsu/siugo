@@ -24,15 +24,15 @@ server.use(lessMiddleware('/less', {
   pathRoot: path.join(__dirname, 'public')
 }));
 
-server.use(uglifyMiddleware({
-  src: __dirname + '/public/javascript',
-  dest: __dirname + '/public/js',
-  prefix: "/js",
-  compressFilter: /\.js$/,
-  compress: true,
-  force: false,
-  debug: false
-}));
+// server.use(uglifyMiddleware({
+//   src: __dirname + '/public/javascript',
+//   dest: __dirname + '/public/js',
+//   prefix: "/js",
+//   compressFilter: /\.js$/,
+//   compress: true,
+//   force: false,
+//   debug: false
+// }));
 
 server.use('/media', express.static(__dirname + '/media'));
 server.use(express.static(__dirname + '/public'));
@@ -63,7 +63,7 @@ server.post('/contact', function(req, res) {
 
   nodemailerMailgun.sendMail(mailOptions, function(error, response) {
     if (error) { res.end(error); }
-    else { res.end('Sent'); }
+    else { res.end('Your message has been sent!'); }
   })
 });
 
