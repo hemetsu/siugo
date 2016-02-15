@@ -37,7 +37,6 @@ window.siugo = (function($) {
 
 	  $mobileBtn.on('click', function(e) {
       e.preventDefault();
-      console.log('test');
       $mainNavigation.addClass('active');
       $bgOverlay.addClass('active');
 	  });
@@ -64,17 +63,53 @@ window.siugo = (function($) {
 
   function buildFooterForm() {
     var $alert = $('#form-alert'),
-        $form = $('#main-footer-form');
+        $form = $('#main-footer-form'),
+        formValidated = true;
 
     var clearForm = function() {
+      formValidated = true;
+      $form.find('input').removeClass('error');
+      $form.find('textarea').removeClass('error');
       $alert.addClass('hide');
       $alert.find('.text').html('');
       $alert.removeClass('alert-danger alert-success');
     };
 
+    var addError = function(input, msg) {
+      formValidated = false;
+      $(input).addClass('error');
+      // $(input).val(msg);
+      $alert.find('.text').html(msg);
+    };
+
     $form.on('submit', function(e) {
       e.preventDefault();
       clearForm();
+
+      // Required check
+      $(this).find('input, textarea').each(function() {
+          var val = $(this).val();
+          if (val == '') {
+            addError(this, 'Please fill out all fields');
+          }
+      });
+
+      if (!formValidated) {
+        $alert.addClass('alert-danger').removeClass('hide');
+        return false;
+      }
+
+      // Email check
+      $(this).find('[type="email"]').each(function() {
+          var val = $(this).val(),
+              regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+          if (!regex.test(val)) {
+            addError(this, 'Please enter a valid email');
+            $alert.addClass('alert-danger').removeClass('hide');
+            return false;
+          }
+      });
 
       $.ajax('/contact', {
         type: $(this).attr('method'),

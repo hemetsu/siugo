@@ -7,6 +7,8 @@
 @color-grey: #999;
 @color-grey-light: #ccc;
 @color-primary: #EBBA4D;
+@color-error: #f30d39;
+@color-error-bg: #f2dede;
 
 @font-primary: 'Raleway', sans-serif;
 @spacing-primary: 0.15em;
@@ -244,6 +246,15 @@ a {
 			border-top: 1px dashed @color-grey;
 			color: @color-primary;
 		}
+		&.error {
+			color: @color-error;
+			//background-color: @color-error-bg;
+		}
+	}
+
+	.alert {
+		border-radius: 0;
+		border: 0 none;
 	}
 
 	.btn {

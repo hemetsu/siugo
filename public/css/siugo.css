@@ -3201,6 +3201,14 @@ a:focus {
   border-top: 1px dashed #999999;
   color: #ebba4d;
 }
+.main-footer-form input.error,
+.main-footer-form textarea.error {
+  color: #f30d39;
+}
+.main-footer-form .alert {
+  border-radius: 0;
+  border: 0 none;
+}
 .main-footer-form .btn {
   margin-top: 20px;
   border-radius: 0;
