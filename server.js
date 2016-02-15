@@ -5,7 +5,7 @@ var express = require('express'),
     logfmt = require('logfmt'),
     lessMiddleware = require('less-middleware'),
     uglifyMiddleware = require('express-uglify-middleware'),
-    bodyParser = require('body-parser'),
+    bodyParser = require('body-parser');
     nodemailer = require('nodemailer'),
     mailGun = require('nodemailer-mailgun-transport');
 

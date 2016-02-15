@@ -5,9 +5,9 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     includereplace: {
-      partials: {
-        src: 'partial/form.html',
-        dest: 'form.html'
+      index: {
+        src: 'partial/index.html',
+        dest: 'index.html'
       }
     },
 
@@ -85,8 +85,8 @@ module.exports = function(grunt) {
         dest: 'js/vendor/bootstrap.min.js'
       },
       main: {
-        src: 'scripts/main.js',
-        dest: 'js/main.min.js'
+        src: 'scripts/siugo.js',
+        dest: 'js/siugo.min.js'
       },
       vendor: {
         src: 'scripts/plugins.js',
