@@ -1,11 +1,51 @@
 /* Homepage Styles */
 
-.home-header {
+.section-hero {
 	position: relative;
 	text-align: center;
 	overflow: hidden;
 	img {
 		width: 100%;
 		height: auto;
+	}
+}
+
+.section-services {
+	padding: 40px 0;
+	text-align: center;
+	background-color: @color-grey-lighter;
+
+	.content {
+		max-width: @site-content-width;
+		margin: 0 auto;
+	}
+
+	h3 {
+		color: @color-black;
+		&:after {
+			content: "";
+			display: block;
+			height: 1px;
+			width: 50px;
+			background-color: @color-primary;
+			margin: 20px auto;
+		}
+	}
+
+	ul { 
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		li {
+			min-height: 20px;
+		}
+	}
+
+	.cta-find-more {
+		display: inline-block;
+		color: @color-primary;
+		text-decoration: none;
+		font-size: 1.5em;
+		margin-top: 40px;
 	}
 }

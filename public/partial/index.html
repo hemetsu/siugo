@@ -39,13 +39,9 @@
 
     <div id="main-container" role="main" class="home">
 
-      <section class="home-header fixed-max-height">
-        <img src="/img/header-hero-1.jpg" alt="Homepage Header image" />
-        <div class="section-header">
-          <h1 class="heading">SIUGO</h1>
-          <div class="heading-secondary nowrap">makeup | hairstyle</div>
-        </div>
-      </section>
+      @@include('home/header.html', {})
+
+      @@include('home/services.html', {})
 
     </div> <!-- /#main-container -->
 

@@ -6,6 +6,7 @@
 @color-white: #fff;
 @color-grey: #999;
 @color-grey-light: #ccc;
+@color-grey-lighter: #FAFAFA;
 @color-primary: #EBBA4D;
 @color-error: #f30d39;
 @color-error-bg: #f2dede;
@@ -18,6 +19,7 @@
 @navigation-height: 60px;
 @site-padding: 30px;
 @site-padding-xs: 15px;
+@site-content-width: 1024px;
 
 @width-md-max: 1199px;
 @width-sm-max: 991px;
@@ -221,13 +223,13 @@ a {
 		text-align: center;
 		border-top: 1px dashed @color-grey;
 		padding-top: 40px;
-		max-width: 1024px;
+		max-width: @site-content-width;
 		margin: 0 auto;
 	}
 }
 
 .main-footer-form {
-	max-width: 1024px;
+	max-width: @site-content-width;
 	margin: 20px auto;
 	padding-bottom: 20px;
 
@@ -248,7 +250,6 @@ a {
 		}
 		&.error {
 			color: @color-error;
-			//background-color: @color-error-bg;
 		}
 	}
 

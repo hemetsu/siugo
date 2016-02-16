@@ -3316,14 +3316,49 @@ a:focus {
   }
 }
 /* Homepage Styles */
-.home-header {
+.section-hero {
   position: relative;
   text-align: center;
   overflow: hidden;
 }
-.home-header img {
+.section-hero img {
   width: 100%;
   height: auto;
+}
+.section-services {
+  padding: 40px 0;
+  text-align: center;
+  background-color: #fafafa;
+}
+.section-services .content {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.section-services h3 {
+  color: #000000;
+}
+.section-services h3:after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 50px;
+  background-color: #ebba4d;
+  margin: 20px auto;
+}
+.section-services ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.section-services ul li {
+  min-height: 20px;
+}
+.section-services .cta-find-more {
+  display: inline-block;
+  color: #ebba4d;
+  text-decoration: none;
+  font-size: 1.5em;
+  margin-top: 40px;
 }
 /* IE 10 and below fixes */
 /* IE 9 and below fixes */
