@@ -3167,6 +3167,9 @@ a:focus {
   background-color: #ffffff;
   padding: 40px 30px;
 }
+.main-footer h2 {
+  margin-bottom: 40px;
+}
 .main-footer .cta-contact-info {
   margin: 0 5px;
 }
@@ -3325,8 +3328,13 @@ a:focus {
   width: 100%;
   height: auto;
 }
+.section {
+  padding: 80px 0;
+}
+.section h2 {
+  margin-bottom: 40px;
+}
 .section-services {
-  padding: 40px 0;
   text-align: center;
   background-color: #fafafa;
 }
