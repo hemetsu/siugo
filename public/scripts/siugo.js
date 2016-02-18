@@ -9,6 +9,7 @@ window.siugo = (function($) {
 		fixedMaxHeight();
 		buildMobileNavigation();
     buildFooterForm();
+    buildCarousel();
 	}
 
 	function fixedHeight() {
@@ -123,6 +124,15 @@ window.siugo = (function($) {
           $alert.find('.text').html(data);
         }
       });
+    });
+  }
+
+  function buildCarousel() {
+    $('.carousel').slick({
+      dots: false,
+      arrows: false,
+      autoplay: true,
+      fade: true
     });
   }
 

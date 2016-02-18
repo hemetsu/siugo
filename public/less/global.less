@@ -80,12 +80,16 @@ a {
 		padding: 0 10px;
 	}
 }
+.border {
+	padding: 10px;
+	border: 1px dashed @color-grey;
+}
 .font-primary { 
 	font-family: @font-primary;
 	letter-spacing: @spacing-primary;
 }
 .heading {
-	font-size: 7em;
+	font-size: 10em;
 	font-weight: 200;
 	color: @color-black;
 	margin: 0;
@@ -98,8 +102,15 @@ a {
 	color: @color-black;
 	margin: 0;
 	text-align: center;
-	text-shadow: 0 0 5px @color-white;
 	text-shadow: 2px 0 2px @color-white, -2px 0 2px @color-white;
+
+	&:after {
+		display: inline-block;
+		content: ".";
+		font-size: 2em;
+		line-height: 1em;
+		color: @color-primary;
+	}
 }
 .section-header {
 	position: absolute;
