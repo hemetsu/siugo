@@ -7,9 +7,11 @@ window.siugo = (function($) {
 	function init() {
 		fixedHeight();
 		fixedMaxHeight();
+    enableSmoothScroll();
 		buildMobileNavigation();
     buildFooterForm();
     buildCarousel();
+    buildPortfolio();
 	}
 
 	function fixedHeight() {
@@ -133,6 +135,72 @@ window.siugo = (function($) {
       arrows: false,
       autoplay: true,
       fade: true
+    });
+  }
+
+  function buildPortfolio() {
+    /* Flickr API */
+    var flickr = {
+      url: 'https://api.flickr.com/services/rest/',
+      format: 'json',
+      key: '924da085423f538b79de8be7ac96a73c',
+      user_id: '136975320@N02',
+      getSets: function(callback) {
+        $.ajax({
+          dataType: 'json',
+          url: flickr.url + '?method=flickr.photosets.getList&api_key=' + flickr.key + '&format=' + flickr.format + '&user_id=' + flickr.user_id + '&nojsoncallback=1',
+          success: function(data) {
+            if (callback && typeof(callback) == 'function') {
+              callback(data.photosets.photoset);
+            }
+          }
+        });
+      },
+      getPhotos: function(photoset_id, callback) {
+        $.ajax({
+          dataType: 'json',
+          url: flickr.url + '?method=flickr.photosets.getPhotos&api_key=' + flickr.key + '&format=' + flickr.format + '&user_id=' + flickr.user_id + '&photoset_id=' + photoset_id + '&nojsoncallback=1',
+          success: function(data) {
+            if (callback && typeof(callback) == 'function') {
+              callback(data);
+            }
+          }
+        });
+      }
+    };
+
+    /* Flickr calls */
+    flickr.getSets(function(sets) {
+      $.each(sets, function(i, set) {
+        flickr.getPhotos(set.id, function(photos) {
+          $.each(photos.photoset.photo, function(i, photo) {
+            var smallPhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
+            var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
+
+            var filter = photos.photoset.title.toLowerCase().replace(/ /g, '').replace(/&/,'-');
+
+            var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + photo.title + '" data-title="' + photo.title + '">' +
+                            '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
+                            '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
+                            '</a></div>';
+            $('#gallery-images').append(template);
+
+            // Lazy load
+            $('.portfolio-img > img').lazyload();
+          });
+
+        });
+      });
+    });
+
+  }
+
+  function enableSmoothScroll() {
+    $('.smooth-scroll').on('click', function(){
+      $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+      }, 500);
+      return false;
     });
   }
 

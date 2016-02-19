@@ -48,10 +48,10 @@
       <nav id="main-navigation" role="navigation">
         <a href="#" id="btn-mobile-menu-close" class="btn-mobile-menu-close visible-xs"><i class="fa fa-times fa-xlg"></i></a>
         <ul>
-          <li><a href="#">About Me</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#about" class="smooth-scroll">About Me</a></li>
+          <li><a href="#services" class="smooth-scroll">Services</a></li>
+          <li><a href="#portfolio" class="smooth-scroll">Portfolio</a></li>
+          <li><a href="#contact" class="smooth-scroll">Contact</a></li>
         </ul>
       </nav>
       <div class="bg-overlay"></div>
@@ -61,11 +61,21 @@
 
       			<section class="section-hero fixed-max-height">
 				<div class="carousel">
-					<img src="/img/header-hero-1.jpg" alt="Homepage Header image" />
-					<img src="/img/header-hero-2.jpg" alt="Homepage Header image" />
-					<img src="/img/header-hero-3.jpg" alt="Homepage Header image" />
-					<img src="/img/header-hero-4.jpg" alt="Homepage Header image" />
-					<img src="/img/header-hero-5.jpg" alt="Homepage Header image" />
+					<div class="carousel-item">
+						<img src="/img/header-hero-1.jpg" alt="Homepage Header image" />
+					</div>
+					<div class="carousel-item">
+						<img data-lazy="/img/header-hero-2.jpg" alt="Homepage Header image" />
+					</div>
+					<div class="carousel-item">
+						<img data-lazy="/img/header-hero-3.jpg" alt="Homepage Header image" />
+					</div>
+					<div class="carousel-item">
+						<img data-lazy="/img/header-hero-4.jpg" alt="Homepage Header image" />
+					</div>
+					<div class="carousel-item">	
+						<img data-lazy="/img/header-hero-5.jpg" alt="Homepage Header image" />
+					</div>
 				</div>
         <div class="section-header">
           <h1 class="heading zoomIn animated">SIUGO</h1>
@@ -73,10 +83,9 @@
         </div>
       </section>
 
-            <section class="section section-services">
-        <div class="content">
-          <h2 class="heading-secondary">Services</h2>
-          
+            <section id="services" class="section section-services">
+        <h2 class="heading-secondary">Services</h2>
+        <div class="container">  
           <div class="row">
             <div class="col-sm-4">
               <h3>Bridal</h3>
@@ -112,36 +121,39 @@
               </ul>
             </div>
           </div>
+        </div>
+        <a href="#contact" class="cta-find-more smooth-scroll">Find out more</a>
+      </section>
 
-          <a href="#contact" class="cta-find-more">Find out more</a>
+            <section id="about" class="section section-about">
+        <h2 class="heading-secondary">About Me</h2>
+
+        <div class="container">
+          <div class="row">
+
+            <div class="col-sm-6 col-sm-push-6">
+              <img src="/img/gloria-chan.jpg" class="border" alt="Gloria Chan Photo" />
+            </div>
+
+            <div class="col-sm-6 col-sm-pull-6">
+              <div class="margin-top">
+                <p>Welcome to SIUGO Makeup I Hairstyle!</p>
+                <p>SIUGO = Little Gloria = Me.</p>
+                <p>I am a freelance mobile makeup artist & hairstylist with professional trainings and certificate. My service extents over Metro Vancouver in English, Cantonese and Mandarin.
+                Glowy and dewy bridal makeup is my forte. I am here to bring out your natural beauty at its best.</p>
+                <p>For any inquiry or to make a quote, please email gloria.siugo@gmail.com or call 604.928.5815.</p>
+                <p>P.S. Gloria is a cat lover. Meow!</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
-            <section class="section section-about">
-        <div class="content">
-          <h2 class="heading-secondary">About Me</h2>
-
-          <div class="container">
-            <div class="row">
-
-              <div class="col-sm-6 col-sm-push-6">
-                <img src="/img/gloria-chan.jpg" class="border" alt="Gloria Chan Photo" />
-              </div>
-
-              <div class="col-sm-6 col-sm-pull-6">
-                <div class="margin-top">
-                  <p>Welcome to SIUGO Makeup I Hairstyle!</p>
-                  <p>SIUGO = Little Gloria = Me.</p>
-                  <p>I am a freelance mobile makeup artist & hairstylist with professional trainings and certificate. My service extents over Metro Vancouver in English, Cantonese and Mandarin.
-                  Glowy and dewy bridal makeup is my forte. I am here to bring out your natural beauty at its best.</p>
-                  <p>For any inquiry or to make a quote, please email gloria.siugo@gmail.com or call 604.928.5815.</p>
-                  <p>P.S. Gloria is a cat lover. Meow!</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+            <section id="portfolio" class="section section-portfolio">
+          <h2 class="heading-secondary">Portfolio</h2>
+          
+          <div id="gallery-images" class="clearfix"></div>
       </section>
 
     </div> <!-- /#main-container -->
@@ -186,9 +198,6 @@
     <!-- Scripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/vendor/slick.min.js"></script>
-    <script src="js/vendor/jquery.mixitup.min.js"></script>
     <script src="js/plugins.min.js"></script>
     <script src="js/siugo.min.js"></script>
 
