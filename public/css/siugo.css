@@ -6481,7 +6481,7 @@ a:focus {
 .section-about img {
   display: block;
   margin: 0 auto;
-  width: auto;
+  width: 100%;
   max-width: 300px;
 }
 .section-portfolio {
@@ -6561,8 +6561,17 @@ a:focus {
   }
 }
 @media (max-width: 767px) {
+  .section {
+    padding: 20px 0;
+  }
+  .section h2 {
+    margin-bottom: 10px;
+  }
   .section-portfolio .portfolio-item {
     width: 50%;
+  }
+  .parallax-container {
+    height: 240px !important;
   }
 }
 /* IE 10 and below fixes */

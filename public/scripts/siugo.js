@@ -196,10 +196,19 @@ window.siugo = (function($) {
   }
 
   function enableSmoothScroll() {
+    var $mainNavigation = $('#main-navigation'),
+        $bgOverlay = $('.bg-overlay', '.main-header');
+
     $('.smooth-scroll').on('click', function(){
       $('html, body').animate({
         scrollTop: $( $.attr(this, 'href') ).offset().top
       }, 500);
+
+      if ($(this).parents('#main-navigation').length > 0) {
+        $mainNavigation.removeClass('active');
+        $bgOverlay.removeClass('active');
+      }
+
       return false;
     });
   }

@@ -69,7 +69,7 @@
 	img {
 		display: block;
 		margin: 0 auto;
-		width: auto;
+		width: 100%;
 		max-width: 300px;
 	}
 }
@@ -145,9 +145,15 @@
 }
 
 @media (max-width: @width-xs-max) {
+	.section {
+		padding: 20px 0;
+		h2 { margin-bottom: 10px; }
+	}
 	.section-portfolio {
 		.portfolio-item {
 			width: 50%;
 		}
 	}
+
+	.parallax-container { height: 240px !important; }
 }
