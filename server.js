@@ -24,16 +24,6 @@ server.use(lessMiddleware('/less', {
   pathRoot: path.join(__dirname, 'public')
 }));
 
-// server.use(uglifyMiddleware({
-//   src: __dirname + '/public/javascript',
-//   dest: __dirname + '/public/js',
-//   prefix: "/js",
-//   compressFilter: /\.js$/,
-//   compress: true,
-//   force: false,
-//   debug: false
-// }));
-
 server.use('/media', express.static(__dirname + '/media'));
 server.use(express.static(__dirname + '/public'));
 
@@ -55,9 +45,8 @@ server.post('/contact', function(req, res) {
 
   var mailOptions = {
     from: req.body.name + ' <' + req.body.email + '>',
-    to: 'hemetsu@gmail.com',
+    to: 'gloria.siugo@gmail.com',
     subject: req.body.subject,
-    // text: 'Wow, mailgun rocks!',
     html: req.body.description
   };
 
