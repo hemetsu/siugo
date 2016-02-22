@@ -134,7 +134,8 @@ window.siugo = (function($) {
       dots: false,
       arrows: false,
       autoplay: true,
-      fade: true
+      fade: true,
+      pauseOnHover: false
     });
   }
 
