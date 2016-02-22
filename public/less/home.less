@@ -19,6 +19,17 @@
 			&:after { display: none; }
 		}
 	}
+	.carousel {
+		opacity: 0;
+		visibility: hidden;
+		height: 1024px;
+		.transition(@transition-primary);
+		&.slick-initialized {
+			opacity: 1;
+			visibility: visible;
+			height: auto;
+		}
+	}
 }
 
 .section {

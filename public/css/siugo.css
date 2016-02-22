@@ -6522,6 +6522,17 @@ a:focus {
 .section-hero .section-header .heading-secondary:after {
   display: none;
 }
+.section-hero .carousel {
+  opacity: 0;
+  visibility: hidden;
+  height: 1024px;
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.section-hero .carousel.slick-initialized {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+}
 .section {
   padding: 80px 0;
 }
