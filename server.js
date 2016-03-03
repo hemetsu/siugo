@@ -6,7 +6,9 @@ var express = require('express'),
     uglifyMiddleware = require('express-uglify-middleware'),
     bodyParser = require('body-parser'),
     nodemailer = require('nodemailer'),
-    mailGun = require('nodemailer-mailgun-transport');
+    mailGun = require('nodemailer-mailgun-transport'),
+    sitemap = require('sitemap'),
+    fs = require('fs');
 
 
 /* Server configuration */
@@ -16,8 +18,10 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 var server = express();
 
+// Set up logger
 server.use(logfmt.requestLogger());
 
+// Set up static files
 server.use('/media', express.static(__dirname + '/media'));
 server.use(express.static(__dirname + '/public'));
 
@@ -51,16 +55,25 @@ server.post('/contact', function(req, res) {
   })
 });
 
+// Generate sitemap
+var sitemap = require('sitemap'),
+    sm = sitemap.createSitemap({
+      hostname : 'http://www.siugo.co',
+      cacheTime : 1000 * 60 * 24,  //keep the sitemap cached for 24 hours,
+      urls: [
+        { url: '/', changefreq: 'monthly', priority: 0.8, lastmodrealtime: true, lastmodfile: __dirname + '/public/index.html' }
+      ]
+    });
+fs.writeFileSync(__dirname + '/public/sitemap.xml', sm.toString());
+
+// Handle Errors
 server.use(function(error, req, res, next) {
   res.status(error.status || 500);
   res.send('Something broke!');
 });
-
-// Handle Errors
 server.use(function(req, res, next) {
   res.status(404).sendFile(__dirname + '/public/404.html');
 });
-
 
 server.listen(port, ipaddress, function() {
   console.log("Listening on " + port);
