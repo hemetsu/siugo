@@ -8,6 +8,14 @@ module.exports = function(grunt) {
       index: {
         src: 'partial/index.html',
         dest: 'index.html'
+      },
+      404: {
+        src: 'partial/404.html',
+        dest: '404.html'
+      },
+      500: {
+        src: 'partial/500.html',
+        dest: '500.html'
       }
     },
 
