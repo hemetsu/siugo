@@ -6665,6 +6665,26 @@ a:focus {
 .section-portfolio .portfolio-item:hover .portfolio-label .album {
   margin-top: 10px;
 }
+.section-portfolio #gallery-images .mix {
+  display: none;
+}
+.section-portfolio #portfolio-filters {
+  text-align: center;
+}
+.section-portfolio #portfolio-filters .btn {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  line-height: 60px;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.15em;
+  padding: 0 20px;
+}
+.section-portfolio #portfolio-filters .btn:hover,
+.section-portfolio #portfolio-filters .btn.active {
+  color: #EBBA4D;
+}
 @media (max-width: 1199px) {
   .section-portfolio .portfolio-item {
     width: 33.333333%;

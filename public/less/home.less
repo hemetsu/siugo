@@ -145,6 +145,25 @@
 			}
 		}
 	}
+	#gallery-images {
+		.mix { display: none; }
+	}
+	#portfolio-filters {
+		text-align: center;
+		.btn {
+			background-color: transparent;
+			border-radius: 0;
+			box-shadow: none;
+			outline: none;
+			line-height: @navigation-height;
+			font-family: @font-primary;
+			letter-spacing: @spacing-primary;
+			padding: 0 20px;
+			&:hover, &.active {
+				color: @color-primary;
+			}
+		}
+	}
 }
 
 @media (max-width: @width-md-max) {

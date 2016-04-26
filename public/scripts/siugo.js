@@ -171,6 +171,7 @@ window.siugo = (function($) {
     };
 
     /* Flickr calls */
+    var filters = [];
     flickr.getSets(function(sets) {
       $.each(sets, function(i, set) {
         flickr.getPhotos(set.id, function(photos) {
@@ -179,6 +180,12 @@ window.siugo = (function($) {
             var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
 
             var filter = photos.photoset.title.toLowerCase().replace(/ /g, '').replace(/&/,'-');
+            
+            // Add new filter
+            if (filters.indexOf(photos.photoset.title) == -1) { 
+              filters.push(photos.photoset.title); 
+              $('#portfolio-filters').append('<button type="button" class="btn filter" data-filter=".' + filter + '">' + photos.photoset.title + '</button>');
+            }
 
             var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + photo.title + '" data-title="' + photo.title + '">' +
                             '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
@@ -190,6 +197,10 @@ window.siugo = (function($) {
             $('.portfolio-img > img').lazyload();
           });
 
+          /* Init Mix it up */
+          setTimeout(function() {
+            $('#gallery-images').mixItUp();
+          }, 200);
         });
       });
     });
