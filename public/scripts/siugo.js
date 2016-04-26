@@ -187,7 +187,7 @@ window.siugo = (function($) {
               $('#portfolio-filters').append('<button type="button" class="btn filter" data-filter=".' + filter + '">' + photos.photoset.title + '</button>');
             }
 
-            var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + photo.title + '" data-title="' + photo.title + '">' +
+            var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
                             '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
                             '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
                             '</a></div>';
