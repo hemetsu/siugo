@@ -195,11 +195,14 @@ window.siugo = (function($) {
 
             // Lazy load
             $('.portfolio-img > img').lazyload();
+
           });
 
           /* Init Mix it up */
           setTimeout(function() {
-            $('#gallery-images').mixItUp();
+            $('#gallery-images').on('mixEnd', function(e, state) {
+              $(window).scroll();
+            }).mixItUp();
           }, 200);
         });
       });
