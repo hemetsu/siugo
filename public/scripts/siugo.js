@@ -168,46 +168,68 @@ window.siugo = (function($) {
           }
         });
       }
-    };
+    };  
 
     /* Flickr calls */
     var filters = [];
-    flickr.getSets(function(sets) {
-      $.each(sets, function(i, set) {
-        flickr.getPhotos(set.id, function(photos) {
-          $.each(photos.photoset.photo, function(i, photo) {
-            var smallPhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
-            var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
 
-            var filter = photos.photoset.title.toLowerCase().replace(/ /g, '').replace(/&/,'-');
-            
-            // Add new filter
-            if (filters.indexOf(photos.photoset.title) == -1) { 
-              filters.push(photos.photoset.title); 
-              $('#portfolio-filters').append('<button type="button" class="btn filter" data-filter=".' + filter + '">' + photos.photoset.title + '</button>');
-            }
+    var getFilterCategory = function(filter) {
+      return filter.toLowerCase().replace(/ /g, '').replace(/&/,'-');
+    };
 
-            var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
-                            '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
-                            '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
-                            '</a></div>';
-            $('#gallery-images').append(template);
+    var getFlickerPhotos = function() {
+      var deferredObj = $.Deferred();
+      flickr.getSets(function(sets) {
+        $.each(sets, function(i, set) {
+          flickr.getPhotos(set.id, function(photos) {
+            $.each(photos.photoset.photo, function(j, photo) {
+              var smallPhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
+              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
 
-            // Lazy load
-            $('.portfolio-img > img').lazyload();
+              var filter = getFilterCategory(photos.photoset.title);
+              
+              // Add new filter
+              if (filters.indexOf(photos.photoset.title) == -1) { 
+                filters.push(photos.photoset.title); 
+              }
 
+              var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
+                              '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
+                              '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
+                              '</a></div>';
+              $('#gallery-images').append(template);
+
+              if ((filters.length === sets.length) && (j === photos.photoset.photo.length - 1)) {
+                deferredObj.resolve();
+              }
+
+            });
           });
-
-          /* Init Mix it up */
-          setTimeout(function() {
-            $('#gallery-images').on('mixEnd', function(e, state) {
-              $(window).scroll();
-            }).mixItUp();
-          }, 200);
         });
       });
-    });
 
+      return deferredObj.promise();
+    };
+
+
+    getFlickerPhotos().done(function() {
+      filters.sort();
+
+      // Append filters
+      $.each(filters, function(i, filterTitle) {
+        var filter = getFilterCategory(filterTitle);
+        $('#portfolio-filters').append('<button type="button" class="btn filter" data-filter=".' + filter + '">' + filterTitle + '</button>');
+      });
+
+      // Lazy load
+      $('.portfolio-img > img').lazyload();
+
+      /* Init Mix it up */
+      $('#gallery-images').on('mixEnd', function(e, state) {
+        $(window).scroll();
+      }).mixItUp();
+    });
+      
   }
 
   function enableSmoothScroll() {
