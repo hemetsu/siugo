@@ -10,7 +10,7 @@ window.siugo = (function($) {
     enableSmoothScroll();
 		buildMobileNavigation();
     buildFooterForm();
-    buildCarousel();
+    // buildCarousel();
     buildPortfolio();
 	}
 
@@ -188,18 +188,23 @@ window.siugo = (function($) {
 
               var filter = getFilterCategory(photos.photoset.title);
               
-              // Add new filter
-              if (filters.indexOf(photos.photoset.title) == -1) { 
-                filters.push(photos.photoset.title); 
+              if (photos.photoset.title == 'featured') { 
+                var carouselTemplate = '<div class="carousel-item"><img src="' + largePhoto + '" alt="Homepage Header image" /></div>';
+                $('.section-hero .carousel').append(carouselTemplate);
+              } else {
+                // Add new filter
+                if (filters.indexOf(photos.photoset.title) == -1) { 
+                  filters.push(photos.photoset.title); 
+                }
+
+                var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
+                                '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
+                                '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
+                                '</a></div>';
+                $('#gallery-images').append(template);
               }
 
-              var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
-                              '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
-                              '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
-                              '</a></div>';
-              $('#gallery-images').append(template);
-
-              if ((filters.length === sets.length) && (j === photos.photoset.photo.length - 1)) {
+              if ((filters.length === sets.length - 1) && (j === photos.photoset.photo.length - 1)) {
                 deferredObj.resolve();
               }
 
@@ -214,6 +219,9 @@ window.siugo = (function($) {
 
     getFlickerPhotos().done(function() {
       filters.sort();
+
+      // Build carousel
+      buildCarousel();
 
       // Append filters
       $.each(filters, function(i, filterTitle) {
