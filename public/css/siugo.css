@@ -6522,6 +6522,19 @@ a:focus {
   text-align: center;
   overflow: hidden;
 }
+.section-hero:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+.section-hero > .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .section-hero img {
   width: 100%;
   height: auto;
@@ -6685,6 +6698,9 @@ a:focus {
 .section-portfolio #portfolio-filters .btn.active {
   color: #ebba4d;
 }
+.parallax-container {
+  height: 600px;
+}
 @media (max-width: 1199px) {
   .section-portfolio .portfolio-item {
     width: 33.333333%;
@@ -6701,7 +6717,7 @@ a:focus {
     width: 50%;
   }
   .parallax-container {
-    height: 240px !important;
+    height: 240px;
   }
 }
 /* IE 10 and below fixes */

@@ -4,6 +4,22 @@
 	position: relative;
 	text-align: center;
 	overflow: hidden;
+
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 56.25%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
 	img {
 		width: 100%;
 		height: auto;
@@ -166,6 +182,10 @@
 	}
 }
 
+.parallax-container {
+	height: 600px;
+}
+
 @media (max-width: @width-md-max) {
 	.section-portfolio {
 		.portfolio-item {
@@ -185,5 +205,5 @@
 		}
 	}
 
-	.parallax-container { height: 240px !important; }
+	.parallax-container { height: 240px; }
 }
