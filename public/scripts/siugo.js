@@ -197,7 +197,7 @@ window.siugo = (function($) {
                   filters.push(photos.photoset.title); 
                 }
 
-                var template = '<div class="mix ' + filter + ' portfolio-item"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
+                var template = '<div class="mix ' + filter + ' portfolio-item" data-filter="' + filter + '" data-order="' + j + '"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
                                 '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
                                 '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
                                 '</a></div>';
@@ -230,12 +230,18 @@ window.siugo = (function($) {
       });
 
       // Lazy load
-      $('.portfolio-img > img').lazyload();
+      $('.portfolio-img > img').lazyload({
+        threshold: 300
+      });
 
       /* Init Mix it up */
       $('#gallery-images').on('mixEnd', function(e, state) {
         $(window).scroll();
-      }).mixItUp();
+      }).mixItUp({
+        load: {
+          sort: 'filter:asc order:asc'
+        }
+      });
     });
       
   }
