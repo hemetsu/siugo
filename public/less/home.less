@@ -64,6 +64,7 @@
 
 	h3 {
 		color: @color-black;
+
 		&:after {
 			content: "";
 			display: block;
@@ -89,6 +90,19 @@
 		text-decoration: none;
 		font-size: 1.5em;
 		margin-top: 40px;
+	}
+
+	.text-price {
+		color: @color-black;
+
+		&:before {
+			content: "";
+			display: block;
+			height: 1px;
+			width: 50px;
+			background-color: @color-primary;
+			margin: 20px auto;
+		}
 	}
 }
 

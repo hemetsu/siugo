@@ -6601,6 +6601,17 @@ a:focus {
   font-size: 1.5em;
   margin-top: 40px;
 }
+.section-services .text-price {
+  color: #000000;
+}
+.section-services .text-price:before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 50px;
+  background-color: #ebba4d;
+  margin: 20px auto;
+}
 .section-about img {
   display: block;
   margin: 0 auto;
