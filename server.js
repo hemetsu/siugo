@@ -34,7 +34,7 @@ server.use( bodyParser.urlencoded({ extended: false }) ); // to support URL-enco
 var nodemailerMailgun = nodemailer.createTransport(mailGun({
   auth: {
     api_key: 'key-5e8edb35ba7aaac798d868643c1a5c46',
-    domain: 'sandbox74efe893734049d7aadd3dc39bfa1b5d.mailgun.org'
+    domain: 'siugo.co'
   }
 }));
 
