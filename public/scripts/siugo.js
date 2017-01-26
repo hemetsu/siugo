@@ -114,17 +114,22 @@ window.siugo = (function($) {
           }
       });
 
+      var onSend = function(data) {
+        if (data === 'success') {
+          $alert.addClass('alert-success').removeClass('hide');
+          $alert.find('.text').html('Your message has been sent!');
+        } else {
+          $alert.addClass('alert-danger').removeClass('hide');
+          $alert.find('.text').html('Sorry, there was an error sending your message. Please try again.');
+          console.log(data);
+        }
+      };
+
       $.ajax('/contact', {
         type: $(this).attr('method'),
         data: $(this).serialize(),
-        error: function(data) {
-          $alert.addClass('alert-danger').removeClass('hide');
-          $alert.find('.text').html(data);
-        },
-        success: function(data) {
-          $alert.addClass('alert-success').removeClass('hide');
-          $alert.find('.text').html(data);
-        }
+        error: onSend,
+        success: onSend
       });
     });
   }

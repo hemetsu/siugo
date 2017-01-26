@@ -51,7 +51,7 @@ server.post('/contact', function(req, res) {
 
   nodemailerMailgun.sendMail(mailOptions, function(error, response) {
     if (error) { res.end(error.toString()); }
-    else { res.end('Your message has been sent!'); }
+    else { res.end('success'); }
   })
 });
 
