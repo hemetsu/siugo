@@ -192,7 +192,7 @@ window.siugo = (function($) {
           flickr.getPhotos(set.id, function(photos) {
             $.each(photos.photoset.photo, function(j, photo) {
               var smallPhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
-              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_b.jpg';
+              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
 
               var filter = getFilterCategory(photos.photoset.title);
 
