@@ -136,10 +136,13 @@ window.siugo = (function($) {
 
   function buildCarousel() {
     $('.carousel').slick({
+			slide: '.carousel-item',
       dots: false,
       arrows: false,
       autoplay: true,
+			autoplaySpeed: 3000,
       fade: true,
+			pauseOnFocus: false,
       pauseOnHover: false
     });
   }
@@ -173,7 +176,7 @@ window.siugo = (function($) {
           }
         });
       }
-    };  
+    };
 
     /* Flickr calls */
     var filters = [];
@@ -189,21 +192,21 @@ window.siugo = (function($) {
           flickr.getPhotos(set.id, function(photos) {
             $.each(photos.photoset.photo, function(j, photo) {
               var smallPhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
-              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
+              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_b.jpg';
 
               var filter = getFilterCategory(photos.photoset.title);
-              
-              if (photos.photoset.title == 'featured') { 
+
+              if (photos.photoset.title == 'featured') {
                 var carouselTemplate = '<div class="carousel-item"><img src="' + largePhoto + '" alt="Homepage Header image" /></div>';
                 $('.section-hero .carousel').append(carouselTemplate);
               } else {
                 // Add new filter
-                if (filters.indexOf(photos.photoset.title) == -1) { 
-                  filters.push(photos.photoset.title); 
+                if (filters.indexOf(photos.photoset.title) == -1) {
+                  filters.push(photos.photoset.title);
                 }
 
                 var template = '<div class="mix ' + filter + ' portfolio-item" data-filter="' + filter + '" data-order="' + j + '"><a href="' + largePhoto + '" data-lightbox="' + filter + '" data-title="' + photo.title + '">' +
-                                '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' + 
+                                '<div class="portfolio-img"><img data-original="' + smallPhoto + '" alt="' + photo.title + '" /></div>' +
                                 '<div class="portfolio-label"><i class="fa fa-search-plus"></i><div class="album">' + photos.photoset.title + '</div></div>' +
                                 '</a></div>';
                 $('#gallery-images').append(template);
@@ -248,7 +251,7 @@ window.siugo = (function($) {
         }
       });
     });
-      
+
   }
 
   function enableSmoothScroll() {
