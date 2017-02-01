@@ -140,7 +140,7 @@ window.siugo = (function($) {
       dots: false,
       arrows: false,
       autoplay: true,
-			autoplaySpeed: 3000,
+			autoplaySpeed: 2000,
       fade: true,
 			pauseOnFocus: false,
       pauseOnHover: false
