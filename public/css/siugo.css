@@ -6442,9 +6442,6 @@ a:focus {
 .social-container a i {
   color: #ffffff;
 }
-.social-container a.transparent {
-  background-color: transparent;
-}
 .social-container a:hover {
   background-color: #ebba4d;
 }
