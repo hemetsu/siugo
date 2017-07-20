@@ -322,7 +322,47 @@ a {
 			background-color: @color-primary;
 		}
 	}
+	a.square {
+		width: auto;
+		background-color: transparent;
+		border-radius: 5px;
+		padding: 5px;
+		height: auto;
+		position: relative;
+
+		&:before {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 4px;
+			position: absolute;
+			left: 0;
+			top: 100%;
+			background-color: @color-primary;
+			.transition(@transition-primary);
+			.scaleX(0);
+			.transform-origin(center center);
+		}
+
+		&:hover {
+			&:before {
+				.scaleX(1);
+			}
+		}
+	}
 }
+
+.icon {
+	width: 40px;
+	background-color: #fff;
+	vertical-align: top;
+}
+.logo {
+	max-height: 40px;
+	vertical-align: top;
+	position: relative;
+}
+
 
 // ***************************************************************************
 // Error

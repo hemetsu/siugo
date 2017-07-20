@@ -6444,6 +6444,46 @@ a:focus {
 .social-container a:hover {
   background-color: #ebba4d;
 }
+.social-container a.square {
+  width: auto;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  height: auto;
+  position: relative;
+}
+.social-container a.square:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: #ebba4d;
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+}
+.social-container a.square:hover:before {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+.icon {
+  width: 40px;
+  background-color: #fff;
+  vertical-align: top;
+}
+.logo {
+  max-height: 40px;
+  vertical-align: top;
+  position: relative;
+}
 .error {
   text-align: center;
 }
