@@ -6564,6 +6564,10 @@ a:focus {
   .main-footer textarea {
     padding: 10px 0;
   }
+  .main-footer .cta-contact-info {
+    display: block;
+    font-size: 0.9em;
+  }
 }
 @media (max-width: 480px) {
   .heading {
