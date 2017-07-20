@@ -6406,6 +6406,7 @@ a:focus {
 .main-footer-form input.error,
 .main-footer-form textarea.error {
   color: #f30d39;
+  text-align: left;
 }
 .main-footer-form .alert {
   border-radius: 0;
@@ -6440,6 +6441,9 @@ a:focus {
 }
 .social-container a i {
   color: #ffffff;
+}
+.social-container a.transparent {
+  background-color: transparent;
 }
 .social-container a:hover {
   background-color: #ebba4d;
@@ -6476,7 +6480,6 @@ a:focus {
 }
 .icon {
   width: 40px;
-  background-color: #fff;
   vertical-align: top;
 }
 .logo {

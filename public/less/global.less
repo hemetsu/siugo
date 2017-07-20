@@ -282,6 +282,7 @@ a {
 		}
 		&.error {
 			color: @color-error;
+			text-align: left;
 		}
 	}
 
@@ -318,6 +319,11 @@ a {
 		margin: 0 5px;
 		.transition(@transition-primary);
 		i { color: @color-white; }
+
+		&.transparent {
+			background-color: transparent;
+		}
+
 		&:hover {
 			background-color: @color-primary;
 		}
@@ -354,7 +360,6 @@ a {
 
 .icon {
 	width: 40px;
-	background-color: #fff;
 	vertical-align: top;
 }
 .logo {
