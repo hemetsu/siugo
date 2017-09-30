@@ -16,18 +16,18 @@ var express = require('express'),
 var ipaddress = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var server = express();
+var app = express();
 
 // Set up logger
-server.use(logfmt.requestLogger());
+app.use(logfmt.requestLogger());
 
 // Set up static files
-server.use('/media', express.static(__dirname + '/media'));
-server.use(express.static(__dirname + '/public'));
+app.use('/media', express.static(__dirname + '/media'));
+app.use(express.static(__dirname + '/public'));
 
 // Set up body parser
-server.use( bodyParser.json() ); // to support JSON-encoded bodies
-server.use( bodyParser.urlencoded({ extended: false }) ); // to support URL-encoded bodies
+app.use( bodyParser.json() ); // to support JSON-encoded bodies
+app.use( bodyParser.urlencoded({ extended: false }) ); // to support URL-encoded bodies
 
 
 // Set up node mailer
@@ -39,7 +39,7 @@ var nodemailerMailgun = nodemailer.createTransport(mailGun({
 }));
 
 // Handle contact form submission
-server.post('/contact', function(req, res) {
+app.post('/contact', function(req, res) {
   if (!req.body) return res.end('Error')
 
   var mailOptions = {
@@ -67,14 +67,16 @@ var sitemap = require('sitemap'),
 fs.writeFileSync(__dirname + '/public/sitemap.xml', sm.toString());
 
 // Handle Errors
-server.use(function(error, req, res, next) {
+app.use(function(error, req, res, next) {
   res.status(error.status || 500);
   res.send('Something broke!');
 });
-server.use(function(req, res, next) {
+app.use(function(req, res, next) {
   res.status(404).sendFile(__dirname + '/public/404.html');
 });
 
-server.listen(port, ipaddress, function() {
+app.listen(port, ipaddress, function() {
   console.log("Listening on " + port);
 });
+
+module.exports = app;
