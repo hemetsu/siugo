@@ -1,4 +1,5 @@
 /* Server requires */
+require('newrelic')
 
 var express = require('express'),
     path = require('path'),
@@ -8,8 +9,7 @@ var express = require('express'),
     nodemailer = require('nodemailer'),
     mailGun = require('nodemailer-mailgun-transport'),
     sitemap = require('sitemap'),
-    fs = require('fs'),
-    newRelic = require('newrelic');
+    fs = require('fs');
 
 
 /* Server configuration */
