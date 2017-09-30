@@ -8,7 +8,8 @@ var express = require('express'),
     nodemailer = require('nodemailer'),
     mailGun = require('nodemailer-mailgun-transport'),
     sitemap = require('sitemap'),
-    fs = require('fs');
+    fs = require('fs'),
+    newRelic = require('newrelic');
 
 
 /* Server configuration */
