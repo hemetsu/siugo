@@ -75,8 +75,6 @@ app.use(function(req, res, next) {
   res.status(404).sendFile(__dirname + '/public/404.html');
 });
 
-app.listen(port, ipaddress, function() {
+app.listen(port, function() {
   console.log("Listening on " + port);
 });
-
-module.exports = app;
