@@ -3,3 +3,4 @@
 public/node_modules
 node_modules
 server2.js
+*.log
