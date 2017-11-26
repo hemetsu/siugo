@@ -20,7 +20,8 @@
     "nodemailer": "^2.1.0",
     "nodemailer-mailgun-transport": "^1.0.1",
     "path": "^0.11.14",
-    "sitemap": "^1.5.0"
+    "sitemap": "^1.5.0",
+    "smtp-connection": "^4.0.2"
   },
   "repository": {
     "type": "git",

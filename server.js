@@ -39,6 +39,10 @@ var nodemailerMailgun = nodemailer.createTransport(mailGun({
   }
 }));
 
+var invalidEmails = [
+  'rambler.ru'
+];
+
 // Handle contact form submission
 app.post('/contact', function(req, res) {
   if (!req.body) return res.end('Error')
@@ -50,10 +54,22 @@ app.post('/contact', function(req, res) {
     html: req.body.description
   };
 
-  nodemailerMailgun.sendMail(mailOptions, function(error, response) {
-    if (error) { res.end(error.toString()); }
-    else { res.end('success'); }
-  })
+  // Check for invalid emails
+  var valid = true;
+  invalidEmails.forEach(function(item, index) {
+    if (req.body.email.indexOf(item) > -1) {
+      valid = false;
+    }
+  });
+
+  if (valid) {
+    nodemailerMailgun.sendMail(mailOptions, function(error, response) {
+      if (error) { res.end(error.toString()); }
+      else { res.end('success'); }
+    });
+  } else {
+    res.end('Invalid email');
+  }
 });
 
 // Generate sitemap
