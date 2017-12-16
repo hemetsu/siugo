@@ -6822,6 +6822,9 @@ a:focus {
     height: 240px;
   }
 }
+.re-review-badge {
+  display: none !important;
+}
 /* IE 10 and below fixes */
 /* IE 9 and below fixes */
 /* IE 8 and below fixes */
