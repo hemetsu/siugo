@@ -6800,6 +6800,10 @@ a:focus {
 .section-kit img {
   margin: 0 1em;
 }
+.section-featured img {
+  display: block;
+  margin: 0 auto;
+}
 .parallax-container {
   height: 600px;
 }
