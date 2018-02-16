@@ -9,7 +9,8 @@ var express = require('express'),
     nodemailer = require('nodemailer'),
     mailGun = require('nodemailer-mailgun-transport'),
     sitemap = require('sitemap'),
-    fs = require('fs');
+    fs = require('fs'),
+    FB = require('fb');
 
 
 /* Server configuration */
@@ -82,6 +83,31 @@ var sitemap = require('sitemap'),
       ]
     });
 fs.writeFileSync(__dirname + '/public/sitemap.xml', sm.toString());
+
+
+// Set up facebook
+var fb = new FB.Facebook({ version: 'v2.4' });
+var accessToken = 'EAACLeFZBMVFsBADGpvJknJDdvOZC3cCgbHaPk5pOAAl5aofrS5Pxp69il4fkZAIovcB2pebYFsBk15cYbxkuM1JCfBt7bVJjwYiYAK0ZAM8YEcOdHMUZCnf8VqCsrZARaQZATcTZCUGQkIu88wBzANDo6WhJUGAHlwIbNU6sVT7c8QZDZD';
+fb.setAccessToken(accessToken);
+
+server.get('/ratings', function(req, res, next) {
+  console.log('Get FB ratings');
+
+  return new Promise(function(resolve, reject) {
+    fb.api('me/ratings', { fields: 'reviewer{name,picture},rating,review_text' }, function(fbRes) {
+      if(!fbRes || fbRes.error) {
+        console.log(!fbRes ? 'error occurred' : fbRes.error);
+        reject('Error getting ratings');
+      }
+      resolve(fbRes.data);
+    });
+  }).then(function(data) {
+    return res.json({ status: 200, data: data });
+  }).catch(function(err) {
+    return res.status(500).json({ status: 500 });
+  });
+});
+
 
 // Handle Errors
 app.use(function(error, req, res, next) {

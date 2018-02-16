@@ -12,6 +12,7 @@ window.siugo = (function($) {
     buildFooterForm();
     // buildCarousel();
     buildPortfolio();
+    getRatings();
 	}
 
 	function fixedHeight() {
@@ -269,6 +270,18 @@ window.siugo = (function($) {
       }
 
       return false;
+    });
+  }
+
+  function getRatings() {
+    $.ajax({
+      dataType: 'json',
+      url: '/ratings',
+      success: function(res) {
+        if (res && res.status === 200) {
+          console.log(res.data);
+        }
+      }
     });
   }
 
