@@ -6135,6 +6135,7 @@ body.lb-disable-scrolling {
 .slick-arrow.slick-hidden {
   display: none;
 }
+/* mixin for multiline */
 body {
   min-width: 320px;
   font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
@@ -6807,6 +6808,65 @@ a:focus {
 .parallax-container {
   height: 600px;
 }
+.review-item {
+  text-align: center;
+  padding: 40px;
+  outline: 0 none;
+}
+.review-item-img img {
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding: 4px;
+  border: 1px solid #ebba4d;
+}
+.review-item-name {
+  margin-top: 10px;
+}
+.review-item-rating {
+  margin-top: 20px;
+}
+.review-item-rating .fa {
+  color: #ebba4d;
+}
+.review-item-text {
+  margin-top: 20px;
+}
+.slick-arrow {
+  color: #000000;
+  outline: 0 none;
+  border: 0 none;
+  background: transparent;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.slick-slider:hover .slick-arrow {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+.slick-slider:hover .slick-arrow.slick-prev {
+  left: 5%;
+}
+.slick-slider:hover .slick-arrow.slick-next {
+  right: 5%;
+}
+.slick-arrow:hover {
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+.slick-arrow.slick-prev {
+  left: 0;
+}
+.slick-arrow.slick-next {
+  right: 0;
+}
 @media (max-width: 1199px) {
   .section-portfolio .portfolio-item {
     width: 33.333333%;
@@ -6825,9 +6885,6 @@ a:focus {
   .parallax-container {
     height: 240px;
   }
-}
-.re-review-badge {
-  display: none !important;
 }
 /* IE 10 and below fixes */
 /* IE 9 and below fixes */

@@ -274,12 +274,71 @@ window.siugo = (function($) {
   }
 
   function getRatings() {
+    var $reviewContainer = $('.js-reviews');
+
     $.ajax({
       dataType: 'json',
       url: '/ratings',
       success: function(res) {
         if (res && res.status === 200) {
-          console.log(res.data);
+          // console.log(res.data);
+
+          $.each(res.data, function(i, item) {
+            if (item.review_text) {
+              var template = '<div class="review-item text-lg">';
+              
+              // Picture
+              template += '<div class="review-item-img"><img src="' + item.reviewer.picture.data.url + '" alt="' + item.reviewer.name + '" /></div>';
+              
+              // Name
+              template += '<div class="review-item-name">' + item.reviewer.name + '</div>';
+              
+              // Rating
+              if (item.rating) {
+                template += '<div class="review-item-rating">';
+                var count = parseInt(item.rating) || 0;
+                for(var i = 0; i < count; i++) {
+                  template += '<i class="fa fa-star fa-2x"></i>';
+                }
+                template += '</div>';
+              }
+              
+              // Review text
+              var text = (item.review_text.length > 600) ? item.review_text.substring(0, 600) + '...' : item.review_text;
+              template += '<div class="review-item-text">' + text + '</div>';
+              template += '</div>';
+
+              $reviewContainer.append(template);
+            }
+          });
+
+
+          $reviewContainer.slick({
+            slide: '.review-item',
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            prevArrow: '<button type="button" class="slick-prev"><span class="fa fa-chevron-left fa-4x"></span></button>',
+            nextArrow: '<button type="button" class="slick-next"><span class="fa fa-chevron-right fa-4x"></span></button>',
+            responsive: [
+              {
+                breakpoint: 1200,
+                settings: {
+                  centerMode: true,
+                  centerPadding: '40px',
+                  slidesToShow: 2
+                }
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  centerMode: true,
+                  centerPadding: '40px',
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
         }
       }
     });
