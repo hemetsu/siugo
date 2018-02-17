@@ -90,7 +90,7 @@ var fb = new FB.Facebook({ version: 'v2.4' });
 var accessToken = 'EAACLeFZBMVFsBADGpvJknJDdvOZC3cCgbHaPk5pOAAl5aofrS5Pxp69il4fkZAIovcB2pebYFsBk15cYbxkuM1JCfBt7bVJjwYiYAK0ZAM8YEcOdHMUZCnf8VqCsrZARaQZATcTZCUGQkIu88wBzANDo6WhJUGAHlwIbNU6sVT7c8QZDZD';
 fb.setAccessToken(accessToken);
 
-server.get('/ratings', function(req, res, next) {
+app.get('/ratings', function(req, res, next) {
   console.log('Get FB ratings');
 
   return new Promise(function(resolve, reject) {
