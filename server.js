@@ -87,7 +87,8 @@ fs.writeFileSync(__dirname + '/public/sitemap.xml', sm.toString());
 
 // Set up facebook
 var fb = new FB.Facebook({ version: 'v2.4' });
-var accessToken = 'EAACLeFZBMVFsBADGpvJknJDdvOZC3cCgbHaPk5pOAAl5aofrS5Pxp69il4fkZAIovcB2pebYFsBk15cYbxkuM1JCfBt7bVJjwYiYAK0ZAM8YEcOdHMUZCnf8VqCsrZARaQZATcTZCUGQkIu88wBzANDo6WhJUGAHlwIbNU6sVT7c8QZDZD';
+// var accessToken = 'EAACLeFZBMVFsBADGpvJknJDdvOZC3cCgbHaPk5pOAAl5aofrS5Pxp69il4fkZAIovcB2pebYFsBk15cYbxkuM1JCfBt7bVJjwYiYAK0ZAM8YEcOdHMUZCnf8VqCsrZARaQZATcTZCUGQkIu88wBzANDo6WhJUGAHlwIbNU6sVT7c8QZDZD';
+var accessToken = 'EAACLeFZBMVFsBAGRZCTCoDs5ZCYke3EIekeP45LZBL0X0ZBFDxzuCZBP6OBjAUOZBuPEm2Ff1Bufw1glgoj1ZBoA9temPOU4leZA31LzFZB51tW1thIYFUlrhbPjkKoX1ZB18YiRzqd3CglFVk2XL4fQrPV4L6cZCPvL8UovmrPiilF8UQZDZD';
 fb.setAccessToken(accessToken);
 
 app.get('/ratings', function(req, res, next) {
