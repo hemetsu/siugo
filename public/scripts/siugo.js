@@ -281,17 +281,19 @@ window.siugo = (function($) {
       url: '/ratings',
       success: function(res) {
         if (res && res.status === 200) {
-          // console.log(res.data);
+          console.log(res.data);
 
           $.each(res.data, function(i, item) {
             if (item.review_text) {
               var template = '<div class="review-item text-lg">';
               
-              // Picture
-              template += '<div class="review-item-img"><img src="' + item.reviewer.picture.data.url + '" alt="' + item.reviewer.name + '" /></div>';
-              
-              // Name
-              template += '<div class="review-item-name">' + item.reviewer.name + '</div>';
+              if (item.reviewer) {
+                // Picture
+                template += '<div class="review-item-img"><img src="' + item.reviewer.picture.data.url + '" alt="' + item.reviewer.name + '" /></div>';
+                
+                // Name
+                template += '<div class="review-item-name">' + item.reviewer.name + '</div>';
+              }
               
               // Rating
               if (item.rating) {
