@@ -6886,6 +6886,12 @@ a:focus {
     height: 240px;
   }
 }
+#privacy-policy {
+  color: #000;
+}
+#privacy-policy .page-agreement {
+  padding-bottom: 6em;
+}
 /* IE 10 and below fixes */
 /* IE 9 and below fixes */
 /* IE 8 and below fixes */
