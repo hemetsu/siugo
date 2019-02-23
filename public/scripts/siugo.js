@@ -10,9 +10,9 @@ window.siugo = (function($) {
     enableSmoothScroll();
 		buildMobileNavigation();
     buildFooterForm();
-    // buildCarousel();
     buildPortfolio();
-    getRatings();
+    // getRatings();
+    buildReviews();
 	}
 
 	function fixedHeight() {
@@ -343,6 +343,35 @@ window.siugo = (function($) {
           });
         }
       }
+    });
+  }
+
+  function buildReviews() {
+    $('.reviews').slick({
+      slide: '.review-item',
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      prevArrow: '<button type="button" class="slick-prev"><span class="fa fa-chevron-left fa-4x"></span></button>',
+      nextArrow: '<button type="button" class="slick-next"><span class="fa fa-chevron-right fa-4x"></span></button>',
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
     });
   }
 
