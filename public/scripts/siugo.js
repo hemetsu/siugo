@@ -193,11 +193,10 @@ window.siugo = (function($) {
           flickr.getPhotos(set.id, function(photos) {
             $.each(photos.photoset.photo, function(j, photo) {
               var smallPhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '.jpg';
-              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_h.jpg';
+              var largePhoto = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_' + photo.secret + '_b.jpg';
 
               var filter = getFilterCategory(photos.photoset.title);
-
-              if (photos.photoset.title == 'featured') {
+              if (photos.photoset.title == 'featured banner') {
                 var carouselTemplate = '<div class="carousel-item"><img src="' + largePhoto + '" alt="Homepage Header image" /></div>';
                 $('.section-hero .carousel').append(carouselTemplate);
               } else {
